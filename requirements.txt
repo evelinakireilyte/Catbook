@@ -1,0 +1,15 @@
+fastapi
+alembic==1.4.3
+greenlet==1.1.2
+importlib-metadata==4.8.3
+importlib-resources==5.4.0
+Mako==1.1.6s
+MarkupSafe==2.0.1
+python-dotenv==0.19.2
+SQLAlchemy==1.4.29
+typing-extensions==4.0.1
+zipp==3.6.0
+fastapi-sqlalchemy
+pydantic
+psycopg2
+uvicorn
