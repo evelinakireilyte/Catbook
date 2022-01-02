@@ -1,5 +1,8 @@
 import uvicorn
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
+
 import os
 from fastapi_sqlalchemy import DBSessionMiddleware
 from fastapi_sqlalchemy import db
@@ -14,6 +17,13 @@ app = FastAPI()
 
 app.add_middleware(DBSessionMiddleware, db_url=os.environ["DATABASE_URL"])
 
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
+templates = Jinja2Templates(directory="templates")
+
+@app.get("/")
+async def serve_spa(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
 @app.post("/user/", response_model=SchemaUser)
 def create_user(user: SchemaUser):
     db_user = ModelUser(
