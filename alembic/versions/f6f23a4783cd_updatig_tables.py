@@ -1,8 +1,8 @@
-"""Added Document table
+"""updatig tables
 
-Revision ID: 6e21b37a6eec
-Revises: 08f9723fa527
-Create Date: 2022-01-02 15:20:08.983795
+Revision ID: f6f23a4783cd
+Revises: 8c26ec74f807
+Create Date: 2022-01-03 11:58:30.221998
 
 """
 from alembic import op
@@ -10,8 +10,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '6e21b37a6eec'
-down_revision = '08f9723fa527'
+revision = 'f6f23a4783cd'
+down_revision = '8c26ec74f807'
 branch_labels = None
 depends_on = None
 
