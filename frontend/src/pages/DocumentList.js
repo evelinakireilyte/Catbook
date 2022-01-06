@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import DocumentCard from '../components/DocumentCard'
+import CountDownTimer from '../components/CountDownTimer'
 import { fetchDocuments } from '../helpers/api'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
-import * as ReactBootStrap from 'react-bootstrap'
 
 const DocumentList = () => {
   const [documents, setDocuments] = useState([])
@@ -12,11 +12,16 @@ const DocumentList = () => {
     const getDocumentCards = async () => {
       setLoading(true)
       const allDocs = await fetchDocuments()
-      setLoading(false)
       setDocuments(allDocs)
       setInterval(() => {
+        setLoading(true)
         fetchDocuments().then(setDocuments)
+        // Unnecessary timeout to demonstrate loading
+        setTimeout(() => setLoading(false), 500)
       }, 300000)
+
+      // Unnecessary timeout to demonstrate loading
+      setTimeout(() => setLoading(false), 500)
     }
     getDocumentCards()
   }, [])
@@ -33,6 +38,7 @@ const DocumentList = () => {
     <>
       <div className="wrapper">
         <h1 class="header text-center">Catbook</h1>
+        <CountDownTimer />
         <DragDropContext onDragEnd={handleOnDragEnd}>
           <Droppable droppableId="docs">
             {(provided) => (
@@ -51,7 +57,7 @@ const DocumentList = () => {
                           ref={provided.innerRef}
                         >
                           <div style={{ padding: '15px' }}>
-                            <DocumentCard {...item} />
+                            <DocumentCard {...item} loading={loading} />
                           </div>
                         </li>
                       )}

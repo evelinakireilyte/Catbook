@@ -133,13 +133,25 @@ deleteDirFilesUsingPattern(
   )
   .then(() =>
     deleteDirFilesUsingPattern(
+      /.main./,
+      path.join(targetParentDirectory, 'static')
+    )
+  )
+  .then(() =>
+    deleteDirFilesUsingPattern(
+      /.chunk./,
+      path.join(targetParentDirectory, 'static')
+    )
+  )
+  .then(() =>
+    deleteDirFilesUsingPattern(
       /.chunk./,
       path.join(targetParentDirectory, 'static/css')
     )
   )
   .then(() =>
     deleteDirFilesUsingPattern(
-      /.chunk./,
+      /./,
       path.join(targetParentDirectory, 'static/media')
     )
   )

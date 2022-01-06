@@ -63,3 +63,12 @@ ul {
   display: flex;
   align-items: center;
 }
+
+.timerWrap {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.timer {
+  padding-left: 5px;
+}
