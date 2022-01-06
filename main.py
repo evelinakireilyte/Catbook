@@ -39,15 +39,6 @@ templates = Jinja2Templates(directory="templates")
 async def serve_spa(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
-@app.post("/documents/", response_model=SchemaDocument)
-def create_document(document: SchemaDocument):
-    db_document = ModelDocument(
-        title=document.title, position=document.position, type_id=document.type_id
-    )
-    db.session.add(db_document)
-    db.session.commit()
-    return db_document
-
 @app.get("/documents/", response_model=List[SchemaDocument])
 def get_documents():
     documents = db.session.query(ModelDocument).all()
