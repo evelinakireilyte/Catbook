@@ -1,24 +1,32 @@
 import React from 'react'
 import Countdown from 'react-countdown'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
-const CountDownTimer = () => {
-  const [data, setData] = useState({ date: Date.now(), delay: 10000 })
-
+const CountDownTimer = ({ timeImterval }) => {
+  const [data, setData] = useState(Date.now() + timeImterval)
+  const [key, setKey] = useState(0)
   const TimeUp = () => <span className="timer">Reloading...</span>
 
-  const renderer = ({ minutes, seconds, completed }) => {
-    if (completed) {
-      setData({ date: Date.now(), delay: 30000 })
-
-      return <TimeUp />
-    } else {
-      return (
-        <div className="timer">
-          {minutes}:{seconds}
-        </div>
-      )
+  const renderer = ({ minutes, seconds }) => {
+    if (String(minutes).length === 1) {
+      minutes = `0${minutes}`
     }
+    if (String(seconds).length === 1) {
+      seconds = `0${seconds}`
+    }
+    return (
+      <div className="timer">
+        {minutes}:{seconds}
+      </div>
+    )
+  }
+
+  const handleComplete = (props) => {
+    console.log(props)
+    setData(Date.now() + timeImterval)
+    props.completed = false
+    setKey(key + 1)
+    return <TimeUp />
   }
 
   return (
@@ -28,9 +36,10 @@ const CountDownTimer = () => {
       </div>
       <div>
         <Countdown
-          date={data.date + data.delay}
+          date={data}
+          key={key}
           renderer={renderer}
-          onComplete={renderer}
+          onComplete={handleComplete}
         />
       </div>
     </div>

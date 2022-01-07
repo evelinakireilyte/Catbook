@@ -4,10 +4,12 @@ import CountDownTimer from '../components/CountDownTimer'
 import { fetchDocuments } from '../helpers/api'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 
+const TIME_INTERVAL = 300000
+
 const DocumentList = () => {
   const [documents, setDocuments] = useState([])
   const [loading, setLoading] = useState(false)
-
+  const [timeInterval, setTimeInterval] = useState(TIME_INTERVAL)
   useEffect(() => {
     const getDocumentCards = async () => {
       setLoading(true)
@@ -18,7 +20,9 @@ const DocumentList = () => {
         fetchDocuments().then(setDocuments)
         // Unnecessary timeout to demonstrate loading
         setTimeout(() => setLoading(false), 500)
-      }, 300000)
+        setTimeInterval(0)
+        setTimeInterval(TIME_INTERVAL)
+      }, TIME_INTERVAL)
 
       // Unnecessary timeout to demonstrate loading
       setTimeout(() => setLoading(false), 500)
@@ -38,7 +42,7 @@ const DocumentList = () => {
     <>
       <div className="wrapper">
         <h1 class="header text-center">Catbook</h1>
-        <CountDownTimer />
+        <CountDownTimer timeImterval={timeInterval} />
         <DragDropContext onDragEnd={handleOnDragEnd}>
           <Droppable droppableId="docs">
             {(provided) => (
