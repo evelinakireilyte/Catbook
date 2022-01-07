@@ -8,6 +8,12 @@ Enter the src directory
 
 #### Docker
 
+Insert a .env file into the root directory alongside the docker-compose file and place the following line inside it:
+
+```
+DATABASE_URL = postgresql+psycopg2://postgres:postgres@db:5432
+```
+
 In the root directory type
 
 ```
@@ -78,7 +84,7 @@ npm start
 Then see the development app on localhost:3000. To upstate the served FastAPI app run:
 
 ```
-npm build
+npm run build
 ```
 
 ## Catbook App Development process
