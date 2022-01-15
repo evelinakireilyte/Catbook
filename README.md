@@ -12,6 +12,8 @@
 4. [Technologies used](#technologies-used)
 5. [Development Process](#development-process)
 6. [Maintenance and Future Improvements](#maintenance-and-future-improvements)
+7. [Challenges](#challenges)
+8. [Wins](#wins)
 
 ## Project Overview
 
@@ -189,13 +191,13 @@ I have kicked things off by:
 
 - Additional features would include document filtering according to type and searching to allow users to quickly locate a document of interest. An option to zoom into picture overlays to be able to read fine text.
 
-### Challenges
+## Challenges
 
-- Found app dockerisation to be a lot more challenging than the rest of the project due to the amount of debugging required for initial set up.
-- This was my first time implementing picture overlay feature. Not knowing what where the options for implementation required more time than initially predicted to research and pick the best choice.
+- Found app dockerisation to be a lot more challenging than the rest of the project due to the amount of debugging required for initial setup.
+- This was my first time implementing a picture overlay feature. Not knowing what where the options for implementation required more time than initially predicted to research and pick the best choice.
 
-### Wins
+## Wins
 
 - Found the project very enjoyable to work on.
-- First successful attempt using FastAPI to build back-end. Found documentation very clear and fairly straight forward. Would love to use it for a bigger project in the near future.
+- First successful attempt using FastAPI to build the back-end. Found documentation very clear and fairly straight forward. Would love to use it for a bigger project in the near future.
 - More comfortable with the use of docker! First dockerised app that I have set up and built using containers.
