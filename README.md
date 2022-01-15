@@ -7,16 +7,15 @@
 ## Table of Contents:
 
 1. [Project Overview](#project-overview)
-2. [Deployment](#deployment)
-3. [Installation](#installation)
-4. [Project Brief](#project-brief)
-5. [Technologies used](#technologies-used)
-6. [Development Process](#development-process)
-7. [Maintenance and Future Improvements](#maintenance-and-future-improvements)
+2. [Installation](#installation)
+3. [Project Brief](#project-brief)
+4. [Technologies used](#technologies-used)
+5. [Development Process](#development-process)
+6. [Maintenance and Future Improvements](#maintenance-and-future-improvements)
 
 ## Project Overview
 
-Catbook is a dockerised full-stack web app, built as a solo project in 3 days. The app was created using FastAPI, Python and PostgreSQL to build the back-end, and React, Bootsrap and Axios to implement the front-end. The app allows users to browse, enlarge images over the screen and reorder documents present in the database by drag and drop.
+Catbook is a dockerised full-stack web app, built as a solo project in 3 days. The app was created using FastAPI, Python and PostgreSQL to build the back-end, and React, Bootstrap and Axios to implement the front-end. The app allows users to browse, enlarge images over the screen and reorder documents present in the database by drag and drop.
 
 ## Installation
 
@@ -142,8 +141,7 @@ npm run build
 - Yarn
 - Insomnia
 - Git
-- Github
-- Heroku (deployment)
+- GitHub
 
 ## Development Process
 
@@ -190,3 +188,14 @@ I have kicked things off by:
 - Presuming user authorisation has been implemented, one to many relationship between users and documents table would allow to display documents the user has saved as 'work in progress', allowing for better visibility and planning.
 
 - Additional features would include document filtering according to type and searching to allow users to quickly locate a document of interest. An option to zoom into picture overlays to be able to read fine text.
+
+### Challenges
+
+- Found app dockerisation to be a lot more challenging than the rest of the project due to the amount of debugging required for initial set up.
+- This was my first time implementing picture overlay feature. Not knowing what where the options for implementation required more time than initially predicted to research and pick the best choice.
+
+### Wins
+
+- Found the project very enjoyable to work on.
+- First successful attempt using FastAPI to build back-end. Found documentation very clear and fairly straight forward. Would love to use it for a bigger project in the near future.
+- More comfortable with the use of docker! First dockerised app that I have set up and built using containers.
