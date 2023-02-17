@@ -33,7 +33,13 @@ Insert a .env file into the root directory alongside the docker-compose file and
 DATABASE_URL = postgresql+psycopg2://postgres:postgres@db:5432
 ```
 
-In the root directory type
+In the root directory type the below to build conatiners:
+
+```
+docker-compose build
+```
+
+Start containers:
 
 ```
 docker-compose up -d
