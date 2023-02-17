@@ -1,33 +1,32 @@
-import React from 'react'
-import Countdown from 'react-countdown'
-import { useState } from 'react'
+import React from "react";
+import Countdown from "react-countdown";
+import { useState } from "react";
 
 const CountDownTimer = ({ timeImterval }) => {
-  const [data, setData] = useState(Date.now() + timeImterval)
-  const [key, setKey] = useState(0)
-  const TimeUp = () => <span className="timer">Reloading...</span>
+  const [data, setData] = useState(Date.now() + timeImterval);
+  const [key, setKey] = useState(0);
+  const TimeUp = () => <span className="timer">Reloading...</span>;
 
   const renderer = ({ minutes, seconds }) => {
     if (String(minutes).length === 1) {
-      minutes = `0${minutes}`
+      minutes = `0${minutes}`;
     }
     if (String(seconds).length === 1) {
-      seconds = `0${seconds}`
+      seconds = `0${seconds}`;
     }
     return (
       <div className="timer">
         {minutes}:{seconds}
       </div>
-    )
-  }
+    );
+  };
 
   const handleComplete = (props) => {
-    console.log(props)
-    setData(Date.now() + timeImterval)
-    props.completed = false
-    setKey(key + 1)
-    return <TimeUp />
-  }
+    setData(Date.now() + timeImterval);
+    props.completed = false;
+    setKey(key + 1);
+    return <TimeUp />;
+  };
 
   return (
     <div className="timerWrap">
@@ -43,6 +42,6 @@ const CountDownTimer = ({ timeImterval }) => {
         />
       </div>
     </div>
-  )
-}
-export default CountDownTimer
+  );
+};
+export default CountDownTimer;
