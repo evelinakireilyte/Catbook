@@ -1,41 +1,40 @@
-import { useState, useEffect } from 'react'
-import DocumentCard from '../components/DocumentCard'
-import CountDownTimer from '../components/CountDownTimer'
-import { fetchDocuments } from '../helpers/api'
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
+import { useState, useEffect } from "react";
+import DocumentCard from "../components/DocumentCard";
+import CountDownTimer from "../components/CountDownTimer";
+import { fetchDocuments } from "../helpers/api";
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
-const TIME_INTERVAL = 300000
+const TIME_INTERVAL = 300000;
 
 const DocumentList = () => {
-  const [documents, setDocuments] = useState([])
-  const [loading, setLoading] = useState(false)
-  const [timeInterval, setTimeInterval] = useState(TIME_INTERVAL)
+  const [documents, setDocuments] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [timeInterval, setTimeInterval] = useState(TIME_INTERVAL);
   useEffect(() => {
     const getDocumentCards = async () => {
-      setLoading(true)
-      const allDocs = await fetchDocuments()
-      setDocuments(allDocs)
+      setLoading(true);
+      const allDocs = await fetchDocuments();
+      setDocuments(allDocs);
       setInterval(() => {
-        setLoading(true)
-        fetchDocuments().then(setDocuments)
+        setLoading(true);
+        fetchDocuments().then(setDocuments);
         // Unnecessary timeout to demonstrate loading
-        setTimeout(() => setLoading(false), 500)
-        setTimeInterval(0)
-        setTimeInterval(TIME_INTERVAL)
-      }, TIME_INTERVAL)
+        setTimeout(() => setLoading(false), 500);
+        setTimeInterval(0);
+        setTimeInterval(TIME_INTERVAL);
+      }, TIME_INTERVAL);
 
       // Unnecessary timeout to demonstrate loading
-      setTimeout(() => setLoading(false), 500)
-    }
-    getDocumentCards()
-  }, [])
+      setTimeout(() => setLoading(false), 500);
+    };
+    getDocumentCards();
+  }, []);
 
   function handleOnDragEnd(result) {
-    const items = Array.from(documents)
-    const [reorderItem] = items.splice(result.source.index, 1)
-    items.splice(result.destination.index, 0, reorderItem)
-    console.log(result)
-    setDocuments(items)
+    const items = Array.from(documents);
+    const [reorderItem] = items.splice(result.source.index, 1);
+    items.splice(result.destination.index, 0, reorderItem);
+    setDocuments(items);
   }
 
   return (
@@ -60,13 +59,13 @@ const DocumentList = () => {
                           {...provided.dragHandleProps}
                           ref={provided.innerRef}
                         >
-                          <div style={{ padding: '15px' }}>
+                          <div style={{ padding: "15px" }}>
                             <DocumentCard {...item} loading={loading} />
                           </div>
                         </li>
                       )}
                     </Draggable>
-                  )
+                  );
                 })}
                 {provided.placeholder}
               </ul>
@@ -75,7 +74,7 @@ const DocumentList = () => {
         </DragDropContext>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default DocumentList
+export default DocumentList;
